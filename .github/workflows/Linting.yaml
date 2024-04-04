@@ -1,0 +1,38 @@
+name: Linting stage
+
+on:
+    push:
+        branches:
+            - master
+    pull_request:
+        branches:
+            - master
+        types:
+            - opened
+            - edited
+            - synchronize
+            - reopened
+    workflow_call:
+
+jobs:
+    lint:
+        name: Linting stage
+        runs-on: ubuntu-latest
+        timeout-minutes: 1
+        steps:
+            - name: '☁️ Checkout repository'
+              uses: actions/checkout@v4.1.1
+
+            - name: '🔧 Setup node'
+              uses: actions/setup-node@v4.0.1
+              with:
+                  node-version: 20.12.0
+
+            - name: '🔧 Install yarn@latest'
+              run: npm i -g yarn@latest
+
+            - name: '📦 install dependencies'
+              run: yarn
+
+            - name: '🔍 Lint code'
+              run: yarn lint
