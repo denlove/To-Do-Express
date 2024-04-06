@@ -1,16 +1,17 @@
 {
-    "extends": [
-        "plugin:@typescript-eslint/recommended",
-        "prettier",
-        "plugin:prettier/recommended",
-    ],
+    "extends": ["plugin:@typescript-eslint/recommended", "prettier", "plugin:prettier/recommended"],
 
     "parser": "@typescript-eslint/parser",
 
     "plugins": ["@typescript-eslint"],
 
     "rules": {
-        "prettier/prettier": 2,
+        "prettier/prettier": [
+            "warn",
+            {
+                "printWidth": 100,
+            },
+        ],
         "no-console": 0,
         "no-unused-vars": 0,
         "@typescript-eslint/no-unused-vars": 0,
