@@ -1,3 +1,16 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+
+path_to_commit="$(pwd)/.git/COMMIT_EDITMSG"
+
+commit_msg=`cat $path_to_commit`
+
+if [ $(echo ${commit_msg} | cut -c1-3) != "TDE" ]; then
+    echo "${RED}Ohhh... Incorrect commit message :("
+    exit 1
+else
+	echo "${GREEN}Great! Correct commit message :D"
+fi
