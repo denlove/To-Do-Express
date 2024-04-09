@@ -1,17 +1,35 @@
 import express, { Application } from 'express'
 import EnvVariables from './EnvVariables'
 import { SERVER_RUNNING_LOG } from '../utils/mock'
+import RootMiddleware from '../middlewares/RootMiddleware'
+import Routes from './Routes'
 
-class Express {
+interface IExpress {
+    express: Application
+    boot(): void
+}
+
+class Express implements IExpress {
     public express: Application
 
     constructor() {
         this.express = express()
         this._envMounting()
+        this._middlewaresMounting()
+        this._routersMounting()
     }
 
     private _envMounting() {
         this.express = EnvVariables.appLocals(this.express)
+    }
+
+    private _middlewaresMounting() {
+        this.express = RootMiddleware.mount(this.express)
+    }
+
+    private _routersMounting() {
+        this.express = Routes.mountApiRouter(this.express)
+        this.express = Routes.mountPathRouter(this.express)
     }
 
     public boot() {
