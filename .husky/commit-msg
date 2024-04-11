@@ -21,5 +21,5 @@ ${WHITE}git commit -m \"branchName-taskNumber: your commit message here\"${NO_CO
 ${YELLOW}Example:${NO_COLOR} ${WHITE}git commit -m \"TDE-123: minor bug fixes\"${NO_COLOR}\n"
     exit 1
 else
-	printf "${GREEN}Success! Commit message approved.${NO_COLOR}\n"
+	printf "${GREEN}✔${NO_COLOR} Success! Commit message approved.\n"
 fi
