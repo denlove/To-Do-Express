@@ -1,15 +1,14 @@
-name: CodeQL stage
+name: Analysis
 
 on:
-    push:
-        branches:
-            - main
     pull_request:
+        branches:
+            - master
     workflow_call:
 
 jobs:
     analyze:
-        name: Analyzing stage
+        name: CodeQL stage
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -18,16 +17,16 @@ jobs:
                     - javascript-typescript
 
         steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4.1.1
+            - name: 🔦 Checkout repository
+              uses: actions/checkout@v4
 
-            - name: Initialize CodeQL
+            - name: ✨ Initialize CodeQL
               uses: github/codeql-action/init@v3
               with:
                   languages: ${{ matrix.language }}
 
-            - name: Autobuild
+            - name: 📦 Autobuild
               uses: github/codeql-action/autobuild@v3
 
-            - name: Perform CodeQL Analysis
+            - name: 🔥 Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v3

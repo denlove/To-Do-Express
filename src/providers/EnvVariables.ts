@@ -5,9 +5,9 @@ import path from 'path'
 class EnvVariables {
     public static vars() {
         dotenv.config({ path: path.join(__dirname, '../../.env') })
-        const port = process.env.PORT || 3000
+        const { port = 3000, dbName = 'defaultName', username, password } = process.env
 
-        return { port }
+        return { port, dbName, username, password }
     }
 
     public static appLocals(_express: Application): Application {
