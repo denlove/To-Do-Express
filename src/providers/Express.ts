@@ -33,7 +33,7 @@ class Express implements IExpress {
     }
 
     public boot() {
-        const port = EnvVariables.vars().port
+        const port = EnvVariables.vars().PORT
         this.express
             .listen(port, () => {
                 return console.log(`${SERVER_RUNNING_LOG}${port}'`)
