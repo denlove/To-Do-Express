@@ -1,23 +1,17 @@
-import { DataTypes, Model } from 'sequelize'
+import { DataTypes } from 'sequelize'
 import sequelize from '../providers/Database'
 
-class RandomWord extends Model {}
+const RandomWord = sequelize.define('RandomWord', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    text: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+})
 
-RandomWord.init(
-    {
-        id: {
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-            type: DataTypes.INTEGER,
-        },
-        text: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-    },
-    {
-        sequelize,
-        modelName: 'RandomWord',
-    },
-)
+export default RandomWord

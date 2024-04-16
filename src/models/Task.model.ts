@@ -1,28 +1,22 @@
-import { DataTypes, Model } from 'sequelize'
+import { DataTypes } from 'sequelize'
 import sequelize from '../providers/Database'
 
-class Task extends Model {}
-
-Task.init(
-    {
-        id: {
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-            type: DataTypes.INTEGER,
-        },
-        content: {
-            allowNull: false,
-            type: DataTypes.STRING,
-        },
-
-        isDone: {
-            allowNull: false,
-            type: DataTypes.BOOLEAN,
-        },
+const Task = sequelize.define('Task', {
+    id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.UUIDV4,
     },
-    {
-        sequelize,
-        modelName: 'Task',
+    content: {
+        allowNull: false,
+        type: DataTypes.STRING,
     },
-)
+
+    isDone: {
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+    },
+})
+
+export default Task
