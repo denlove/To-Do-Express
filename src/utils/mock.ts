@@ -1,6 +1,7 @@
 export const SERVER_RUNNING_LOG = "Server :: Running @ 'http://localhost:"
 export const MOUNTING_API_LOG = 'Routes :: Mounting API Routes...'
 export const MOUNTING_PATH_LOG = 'Routes :: Mounting Path Routes...'
+export const MOUNTING_GRAPHQL_LOG = 'Routes :: Mounting GraphQL Routes...'
 
 export const BOOTING_DB_LOG = 'Database :: Booting...'
 export const BOOTING_ENV_LOG = 'Configuration :: Booting...'

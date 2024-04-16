@@ -1,24 +1,17 @@
 import { Sequelize } from 'sequelize'
 import EnvVariables from './EnvVariables'
+const { PG_URI } = EnvVariables.vars()
 
-export class Database {
-    public static sequelize: Sequelize
+const sequelize = new Sequelize(PG_URI)
 
-    public static async init() {
-        const { DB_DATABASE, DB_USERNAME, DB_PASSWORD } = EnvVariables.vars()
-
-        Database.sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
-            host: 'localhost',
-            dialect: 'postgres',
-        })
-
-        try {
-            await Database.sequelize.authenticate()
-            console.log('Connection has been established successfully.')
-        } catch (error) {
-            console.error('Unable to connect to the database:', error)
-        }
+export const connectDatabase = async (sequelize: Sequelize) => {
+    try {
+        await sequelize.authenticate()
+        await sequelize.sync()
+        console.log('Connection has been established successfully.')
+    } catch (error) {
+        console.error('Unable to connect to the database:', error)
     }
 }
 
-export default Database.sequelize
+export default sequelize

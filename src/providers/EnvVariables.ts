@@ -8,12 +8,14 @@ class EnvVariables {
 
         const {
             PORT = 3000,
-            DB_DATABASE = 'defaultName',
-            DB_USERNAME = 'username',
-            DB_PASSWORD = 'password',
+            PG_DATABASE = 'defaultName',
+            PG_USERNAME = 'username',
+            PG_PASSWORD = 'password',
+            PG_PORT = 5432,
+            PG_URI = 'postgres://username:password@postgres:5432/defaultName',
         } = process.env
 
-        return { PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD }
+        return { PORT, PG_DATABASE, PG_USERNAME, PG_PASSWORD, PG_PORT, PG_URI }
     }
 
     public static appLocals(_express: Application): Application {

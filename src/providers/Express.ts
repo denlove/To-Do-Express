@@ -30,6 +30,7 @@ class Express implements IExpress {
     private _routersMounting() {
         this.express = Routes.mountApiRouter(this.express)
         this.express = Routes.mountPathRouter(this.express)
+        this.express = Routes.mountGraphqlRouter(this.express)
     }
 
     public boot() {
@@ -44,4 +45,4 @@ class Express implements IExpress {
     }
 }
 
-export default new Express()
+export default Express
